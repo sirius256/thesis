@@ -1,5 +1,5 @@
 @extends('main.layouts.public')
 
 @section('content')
-   home
+   <div class="container">home</div>
 @endsection

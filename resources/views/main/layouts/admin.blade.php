@@ -2,10 +2,14 @@
 
 @section('pageContent')
     <main class="main">
-        <header class="header">header</header>
+        <header class="header">
+            <div class="container">header</div>
+        </header>
         <div class="content">
             @yield('content')
         </div>
-        <footer class="footer">footer</footer>
+        <footer class="footer">
+            <div class="container">footer</div>
+        </footer>
     </main>
 @endsection
