@@ -3,13 +3,13 @@
 @section('pageContent')
     <main class="main">
         <header class="header">
-            <div class="container">header</div>
+            @include('main.components.publicHeader')
         </header>
         <div class="content">
             @yield('content')
         </div>
         <footer class="footer">
-            <div class="container">footer</div>
+            @include('main.components.publicFooter')
         </footer>
     </main>
 @endsection
