@@ -47,4 +47,29 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * @return bool
+     */
+    public function isHasAdminRole(): bool
+    {
+        return $this->role === User::ROLE_ADMIN;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isHasModeratorRole(): bool
+    {
+        return $this->role === User::ROLE_MODERATOR;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isHasUserRole(): bool
+    {
+        return $this->role === User::ROLE_USER;
+    }
+
 }
