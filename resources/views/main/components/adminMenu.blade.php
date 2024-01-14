@@ -1,20 +1,20 @@
 <div class="admin-menu">
     <ul>
         <li>
-            <a href="{{ route('admin.user.dashboard') }}">dashboard</a>
+            <a href="{{ route('admin.user.dashboard') }}" class="admin-menu-item {{ request()->routeIs('admin.user.dashboard') ? 'active' : '' }}">dashboard</a>
         </li>
         <li>
-            <a href="{{ route('profile.edit') }}">profile.edit</a>
+            <a href="{{ route('profile.edit') }}" class="admin-menu-item {{ request()->routeIs('profile.edit') ? 'active' : '' }}">profile.edit</a>
         </li>
         <li>
-            <a href="{{ route('admin.user.profile.view') }}">profile.view</a>
+            <a href="{{ route('admin.user.profile.view') }}" class="admin-menu-item {{ request()->routeIs('admin.user.profile.view') ? 'active' : '' }}">profile.view</a>
         </li>
         <li>
-            <form method="POST" action="{{ route('logout') }}">
+            <form class="admin-menu-item-logout-wrap" method="POST" action="{{ route('logout') }}">
                 @csrf
-                <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();this.closest('form').submit();">
+                <a class="admin-menu-item" href="http://thesis.localhost/logout" onclick="event.preventDefault();this.closest('form').submit();">
                     {{ __('Log Out') }}
-                </x-responsive-nav-link>
+                </a>
             </form>
         </li>
     </ul>

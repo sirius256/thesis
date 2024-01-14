@@ -13,7 +13,6 @@ body {
     flex-shrink: 0;
     flex-basis: auto;
     z-index: 1;
-    padding: 10px 0;
     box-shadow: 0px 1px 2px rgba(0, 0, 150, 0.25);
     background: #2196f3;
     color: white;
@@ -46,7 +45,6 @@ body {
 
 .public-menu {
     display: flex;
-    padding: 10px;
     gap: 10px;
     justify-content: end;
     margin: 0;
@@ -56,18 +54,31 @@ body {
     color: white;
 }
 
-.admin-menu a {
+.admin-menu-item {
     color: white;
-    text-align: center;
+    text-align: left;
     display: block;
-    padding: 10px;
+    padding: 10px 10px 10px 20px;
     background: #2469a1;
     text-decoration: none;
+}
+
+.admin-menu-item.active,
+.admin-menu-item:hover {
+    background: #2196f3;
+}
+
+.admin-menu-item-logout-wrap {
+    padding: 0;
 }
 
 .admin-menu ul {
     margin: 0;
     padding: 0;
+}
+
+.admin-menu {
+    padding-top: 5px;
 }
 
 .admin-menu ul li {
@@ -91,4 +102,33 @@ body {
 
 .admin-page-content {
     padding: 20px;
+}
+
+.public-menu-item {
+    display: block;
+    padding: 20px;
+}
+
+.public-header-logo-wrap:hover,
+.public-menu-item.active,
+.public-menu-item:hover {
+    background: #6eb3e9;
+}
+
+.public-header-logo-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 20px;
+}
+
+.public-header-logo {
+    width: 44px;
+    display: block;
+}
+
+.public-header-wrap {
+    display: flex;
+    justify-content: space-between;
 }
