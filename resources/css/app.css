@@ -61,6 +61,7 @@ body {
     padding: 10px 10px 10px 20px;
     background: #2469a1;
     text-decoration: none;
+    font-size: 14px;
 }
 
 .admin-menu-item.active,
@@ -131,4 +132,44 @@ body {
 .public-header-wrap {
     display: flex;
     justify-content: space-between;
+}
+
+.public-about-block {
+    background: #dadada;
+    padding: 100px;
+}
+
+.public-block-title {
+    font-size: 30px;
+    padding-bottom: 20px;
+}
+
+.public-shop-block {
+    padding-top: 60px;
+    padding-bottom: 120px;
+}
+
+.shop-block-items {
+
+}
+
+.shop-block-item {
+
+}
+
+.shop-block-items,
+.administration-flex-block {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: space-around;
+}
+
+.shop-block-item,
+.administration-flex-block-item {
+    width: 300px;
+    max-width: 300px;
+    min-width: 300px;
+    flex: 1;
 }

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('devices', function (Blueprint $table) {
             $table->id();
-            $table->integer('name');
+            $table->string('name');
             $table->string('model_id');
             $table->string('hash')->unique();
             $table->integer('owner_user_id')->nullable();

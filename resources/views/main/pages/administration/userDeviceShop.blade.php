@@ -1,7 +1,10 @@
+userShop.blade.php
+deviceModels
+
 @extends('main.layouts.admin')
 
 @section('content')
     <div class="admin-page-content">
-        <div>{{ __('Profile') }}</div>
+        @include('main.components.shop')
     </div>
- @endsection
+@endsection

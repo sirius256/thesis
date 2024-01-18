@@ -2,4 +2,6 @@
 
 namespace App\Models;
 
-class DeviceActionQueue {}
+use Illuminate\Database\Eloquent\Model;
+
+class DeviceActionQueue extends Model {}

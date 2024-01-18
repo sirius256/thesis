@@ -16,7 +16,7 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
-        return view('main.pages.admin.editProfile', [
+        return view('main.pages.administration.editProfile', [
             'user' => $request->user(),
         ]);
     }
@@ -26,7 +26,7 @@ class ProfileController extends Controller
      */
     public function view(Request $request): View
     {
-        return view('main.pages.admin.viewProfile', [
+        return view('main.pages.administration.viewProfile', [
             'user' => $request->user(),
         ]);
     }

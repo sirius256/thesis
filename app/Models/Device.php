@@ -2,4 +2,6 @@
 
 namespace App\Models;
 
-class Device {}
+use Illuminate\Database\Eloquent\Model;
+
+class Device extends Model {}

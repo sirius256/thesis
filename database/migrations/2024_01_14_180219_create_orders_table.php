@@ -16,8 +16,8 @@ return new class extends Migration
             $table->integer('status_id');
             $table->integer('user_id');
             $table->integer('device_id');
-            $table->text('comment_for_user');
-            $table->text('comment_for_moderator');
+            $table->text('comment_for_user')->nullable();
+            $table->text('comment_for_moderator')->nullable();
             $table->timestamps();
         });
     }

@@ -2,4 +2,6 @@
 
 namespace App\Models;
 
-class Status {}
+use Illuminate\Database\Eloquent\Model;
+
+class Status extends Model {}

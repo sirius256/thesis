@@ -10,7 +10,7 @@ class DashboardController extends Controller
 
     public function dashboard(Request $request): View
     {
-        return view('main.pages.admin.dashboard');
+        return view('main.pages.administration.dashboard');
     }
 
 }

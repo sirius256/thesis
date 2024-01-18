@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\DeviceModel;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -18,9 +19,26 @@ class RegisteredUserController extends Controller
     /**
      * Display the registration view.
      */
-    public function create(): View
+    public function create(Request $request): View
     {
-        return view('main.pages.public.register');
+        $deviceModelId = null;
+        $redirectAfterRegisterTo = 'dashboard';
+
+        if (!empty($request->model_id)) {
+            $modelId = (int) $request->model_id;
+            $deviceModel = DeviceModel::where('id', $modelId)->first();
+            if (!empty($deviceModel) && $deviceModel->isDeviceAvailable()) {
+                $deviceModelId = $deviceModel->id;
+                $redirectAfterRegisterTo = 'orderSummary';
+            } else {
+                $redirectAfterRegisterTo = 'shop';
+            }
+        }
+
+        return view('main.pages.public.register', [
+            'deviceModelId' => $deviceModelId,
+            'redirectAfterRegisterTo' => $redirectAfterRegisterTo,
+        ]);
     }
 
     /**
@@ -46,6 +64,19 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        $redirectTo = RouteServiceProvider::HOME;
+
+        if ($request->redirect_after_register_to === 'orderSummary' ) {
+            $deviceModelId = $request->device_model_id;
+            if (DeviceModel::isDeviceModelExist($deviceModelId)) {
+                $redirectTo = route('administration.user.order.summary', ['modelId' => $deviceModelId]);
+            }
+        } elseif ($request->redirect_after_register_to === 'shop') {
+            $redirectTo = route('administration.user.device.shop');
+        } elseif ($request->redirect_after_register_to === 'dashboard') {
+            $redirectTo = RouteServiceProvider::HOME;
+        }
+
+        return redirect($redirectTo);
     }
 }

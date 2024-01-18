@@ -8,10 +8,10 @@
         <div class="public-header-right-block">
             <ul class="public-menu">
                 <li>
-                    <a href="{{route('login')}}" class="public-menu-item {{ request()->routeIs('login') ? 'active' : '' }}">{{ __("Login") }}</a>
+                    <a href="{{route('login')}}" class="public-menu-item {{ request()->routeIs('login') ? 'active' : '' }}">{{ __("public.menu-item.login") }}</a>
                 </li>
                 <li>
-                    <a href="{{route('register')}}" class="public-menu-item {{ request()->routeIs('register') ? 'active' : '' }}">{{ __("Register") }}</a>
+                    <a href="{{route('register')}}" class="public-menu-item {{ request()->routeIs('register') ? 'active' : '' }}">{{ __("public.menu-item.register") }}</a>
                 </li>
             </ul>
         </div>

@@ -2,4 +2,6 @@
 
 namespace App\Models;
 
-class OrderLog {}
+use Illuminate\Database\Eloquent\Model;
+
+class OrderLog extends Model  {}

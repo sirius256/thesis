@@ -42,13 +42,19 @@
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
             </div>
 
+            <x-text-input id="device_model_id" type="hidden" name="device_model_id" value="{{ $deviceModelId }}"/>
+            <x-text-input id="redirect_after_register_to" type="hidden" name="redirect_after_register_to" value="{{ $redirectAfterRegisterTo }}"/>
+
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
                 </a>
-
                 <x-primary-button class="ms-4">
-                    {{ __('Register') }}
+                    @if(!empty($deviceModelId))
+                        {{ __('Зареєструватись і перейти до наступного кроку') }}
+                    @else
+                        {{ __('Register') }}
+                    @endif
                 </x-primary-button>
             </div>
         </form>

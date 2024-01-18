@@ -2,4 +2,6 @@
 
 namespace App\Models;
 
-class DeviceGalleryImage {}
+use Illuminate\Database\Eloquent\Model;
+
+class DeviceGalleryImage extends Model {}
