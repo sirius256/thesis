@@ -1,6 +1,3 @@
-userShop.blade.php
-deviceModels
-
 @extends('main.layouts.admin')
 
 @section('content')
