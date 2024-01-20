@@ -18,6 +18,7 @@ class ProfileController extends Controller
     {
         return view('main.pages.administration.editProfile', [
             'user' => $request->user(),
+            'pageTitle' => 'Редагування профілю',
         ]);
     }
 
@@ -28,6 +29,7 @@ class ProfileController extends Controller
     {
         return view('main.pages.administration.viewProfile', [
             'user' => $request->user(),
+            'pageTitle' => 'Профіль',
         ]);
     }
 

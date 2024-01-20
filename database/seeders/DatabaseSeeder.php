@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             DeviceModelSeeder::class,
             StatusSeeder::class,
-            OrderSeeder::class,
             DeviceSeeder::class,
+            DeviceModelTechnicalDetailsSeeder::class,
         ]);
     }
 }

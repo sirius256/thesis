@@ -23,6 +23,13 @@ class UserSeeder extends Seeder
             'role' => User::ROLE_USER,
         ]);
 
+        DB::table('users')->insert([
+            'name' => 'moderator',
+            'email' => 'moderator@gmail.com',
+            'password' => Hash::make('moderator@gmail.com'),
+            'role' => User::ROLE_MODERATOR,
+        ]);
+
         for ($i = 0; $i <= 10; $i++) {
             DB::table('users')->insert([
                 'name' => 'name_' . Str::random(10),

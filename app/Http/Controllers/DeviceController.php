@@ -14,22 +14,13 @@ class DeviceController extends Controller
     public function userListDevices(Request $request): View
     {
         $devices = Device::where('owner_user_id', Auth::id())
+            ->where('is_active', 1)
             ->orderBy('created_at')
             ->get();
 
-        $preparedDevices = [];
-        foreach ($devices as $device) {
-            $deviceModel = DeviceModel::where('id', $device->model_id)->first();
-            $preparedDevices[] = [
-                'deviceId' => $device->id,
-                'modelName' => $deviceModel->name,
-                'name' => $device->name,
-                'modelImageUrl' => $deviceModel->image_url,
-            ];
-        }
-
         return view('main.pages.administration.userDevices', [
-            'devices' => $preparedDevices
+            'devices' => $devices,
+            'pageTitle' => 'Мої пристрої',
         ]);
     }
 
@@ -37,6 +28,7 @@ class DeviceController extends Controller
         return view('main.pages.administration.userDeviceShop', [
             'shopDeviceModels' => DeviceModel::getShopDeviceModels(),
             'isPublicShop' => false,
+            'pageTitle' => 'Магазин',
         ]);
     }
 

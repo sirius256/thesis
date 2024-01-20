@@ -28,9 +28,9 @@
         <li>
             <form class="admin-menu-item-logout-wrap" method="POST" action="{{ route('logout') }}">
                 @csrf
-                <a class="admin-menu-item" href="http://thesis.localhost/logout" onclick="event.preventDefault();this.closest('form').submit();">
+                <button class="admin-menu-item" type="submit" onclick="event.preventDefault();this.closest('form').submit();">
                     {{ __('administration.menu-item.logout') }}
-                </a>
+                </button>
             </form>
         </li>
     </ul>

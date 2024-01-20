@@ -71,6 +71,13 @@ body {
 
 .admin-menu-item-logout-wrap {
     padding: 0;
+    display: block;
+    width: 100%;
+}
+
+.admin-menu-item-logout-wrap button {
+    display: block;
+    width: 100%;
 }
 
 .admin-menu ul {
@@ -172,4 +179,33 @@ body {
     max-width: 300px;
     min-width: 300px;
     flex: 1;
+}
+
+.admin-content-header {
+    padding: 20px 20px 0 20px;
+}
+
+.administration-header {
+    padding: 10px 0;
+    display: flex;
+}
+
+.administration-moderator-header {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+
+}
+
+.administration-header-logo-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 20px;
+}
+
+.administration-header-logo {
+    width: 44px;
+    display: block;
 }

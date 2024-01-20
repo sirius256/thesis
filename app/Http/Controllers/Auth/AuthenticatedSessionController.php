@@ -29,6 +29,10 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        if ($request->user()->isHasModeratorRole()) {
+            return redirect()->route('administration.moderator.dashboard');
+        }
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ModeratorController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
@@ -22,10 +23,13 @@ Route::middleware('auth')->group(function () {
         Route::get('/administration/user/device/list', [DeviceController::class, 'userListDevices'])->name('administration.user.device.list');
         Route::get('/administration/user/device/shop', [DeviceController::class, 'userDeviceShop'])->name('administration.user.device.shop');
         Route::get('/administration/user/order/summary/{modelId}', [OrderController::class, 'summaryOrder'])->name('administration.user.order.summary');
+        Route::post('/administration/user/order/summary/{modelId}', [OrderController::class, 'summaryOrderSubmit'])->name('administration.user.order.summary.submit');
     });
 
     Route::middleware('hasModeratorRole')->group(function () {
-
+        Route::post('/administration/moderator/order/complete/{orderId}', [OrderController::class, 'moderatorCompleteOrderSubmit'])->name('administration.moderator.order.complete');
+        Route::get('/administration/moderator/order/view/{orderId}', [OrderController::class, 'moderatorViewOrder'])->name('administration.moderator.order.view');
+        Route::get('/administration/moderator/dashboard', [ModeratorController::class, 'dashboard'])->name('administration.moderator.dashboard');
     });
 
     Route::middleware('hasAdminRole')->group(function () {
