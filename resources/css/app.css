@@ -142,8 +142,9 @@ body {
 }
 
 .public-about-block {
-    background: #dadada;
+    background: #212529;
     padding: 100px;
+    color: white;
 }
 
 .public-block-title {
@@ -157,14 +158,20 @@ body {
 }
 
 .shop-block-items {
-
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: start;
 }
 
 .shop-block-item {
-
+    width: 250px;
+    max-width: 250px;
+    min-width: 250px;
+    flex: 1;
 }
 
-.shop-block-items,
 .administration-flex-block {
     display: flex;
     gap: 20px;
@@ -173,7 +180,6 @@ body {
     justify-content: space-around;
 }
 
-.shop-block-item,
 .administration-flex-block-item {
     width: 300px;
     max-width: 300px;
@@ -206,6 +212,37 @@ body {
 }
 
 .administration-header-logo {
+    width: 44px;
+    display: block;
+}
+
+.administration-user-devices {
+    display: flex;
+    gap: 10px;
+}
+
+.administration-user-device-item {
+    width: 250px;
+}
+
+.content-footer {
+    padding: 20px 0 120px 0;
+    display: flex;
+}
+
+.content-footer-wrap {
+    background: #2196f3;
+}
+
+.public-footer-logo-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 20px;
+}
+
+.public-footer-logo {
     width: 44px;
     display: block;
 }

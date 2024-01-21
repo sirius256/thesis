@@ -13,14 +13,36 @@ class DeviceModelSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i = 1; $i <= 4; $i++) {
-            DB::table('device_models')->insert([
-                'id' => $i,
-                'title' => 'title_' . Str::random(10),
-                'name' => 'A10' . $i,
-                'image_url' => 'images/device-models/' . $i . '.png',
-                'description' => 'description_' . Str::random(100),
-            ]);
-        }
+         DB::table('device_models')->insert([
+             'id' => 1,
+             'title' => 'A101',
+             'name' => 'A101',
+             'image_url' => 'images/device-models/1.png',
+             'description' => 'Пристрій побудований на базі Raspberry PI 4 Model B 8 GB і камері 12mp. Фото будуть надіслані на сервер, де ви зможете їх переглянути.',
+         ]);
+
+         DB::table('device_models')->insert([
+             'id' => 2,
+             'title' => 'A102',
+             'name' => 'A102',
+             'image_url' => 'images/device-models/inDevelop.png',
+             'description' => 'В майбутній розробці.',
+         ]);
+
+         DB::table('device_models')->insert([
+             'id' => 3,
+             'title' => 'A103',
+             'name' => 'A103',
+             'image_url' => 'images/device-models/inDevelop.png',
+             'description' => 'В майбутній розробці.',
+         ]);
+
+         DB::table('device_models')->insert([
+             'id' => 4,
+             'title' => 'A104',
+             'name' => 'A104',
+             'image_url' => 'images/device-models/inDevelop.png',
+             'description' => 'В майбутній розробці.',
+         ]);
     }
 }

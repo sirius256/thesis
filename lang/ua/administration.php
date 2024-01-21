@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'menu-item.dashboard' => 'Панель управління',
+    'menu-item.dashboard' => 'Головна',
     'menu-item.profile' => 'Профіль',
     'menu-item.profile-edit' => 'Редагувати профіль',
     'menu-item.logout' => 'Вийти',

@@ -7,9 +7,9 @@
         </header>
         <div class="content">
             @yield('content')
+            <footer class="content-footer-wrap">
+                @include('main.components.publicFooter')
+            </footer>
         </div>
-        <footer class="footer">
-            @include('main.components.publicFooter')
-        </footer>
     </main>
 @endsection

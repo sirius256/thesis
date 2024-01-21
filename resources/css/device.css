@@ -1,0 +1,16 @@
+.device-item {
+    width: 250px;
+    display: block;
+    max-width: 250px;
+    flex: 1;
+}
+
+.device-items {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.device-item-actions {
+    padding-top: 20px;
+}

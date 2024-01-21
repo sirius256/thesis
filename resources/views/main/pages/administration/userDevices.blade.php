@@ -9,19 +9,20 @@
                 </div>
             </div>
         @else
-            <div class="administration-flex-block">
+            <div class="device-items">
                 @foreach ($devices as $device)
-                    <div class="administration-flex-block-item">
-                        <div class="card">
-                            <img class="card-img-top" src="{{ asset($device->getModelImageUrl()) }}" alt="device image">
-                            <div class="card-body">
-                                <h5 class="card-title">Id:{{ $device->id }}</h5>
-                                <p class="card-text">
-                                    <span>modelName: {{ $device->getModelName() }}</span>
-                                    <span>name:{{ $device->name }}</span>
-                                </p>
-                                <a href="#" class="btn btn-primary">Галерея</a>
-                                <a href="#" class="btn btn-primary">Зробити фото</a>
+                    <div class="card device-item shadow">
+                        <img class="card-img-top" src="{{ asset($device->getModelImageUrl()) }}" alt="device image">
+                        <div class="card-body">
+                            <h5 class="card-title">Id:{{ $device->id }}</h5>
+                            <p class="card-text">
+                                <span>modelName: {{ $device->getModelName() }}</span>
+                                <span>name:{{ $device->name }}</span>
+                            </p>
+
+                            <div class="device-item-actions">
+                                <a href="{{ route('register', ['deviceId' => $device->id ])}}" class="btn btn-dark">Зробити фото</a>
+                                <a href="{{ route('register', ['deviceId' => $device->id ])}}" class="btn btn-dark">Галерея</a>
                             </div>
                         </div>
                     </div>
