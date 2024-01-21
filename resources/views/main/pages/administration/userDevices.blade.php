@@ -21,7 +21,7 @@
                             </p>
 
                             <div class="device-item-actions">
-                                <a href="{{ route('register', ['deviceId' => $device->id ])}}" class="btn btn-dark">Зробити фото</a>
+                                <a href="{{ route('administration.user.device.make.photo', ['deviceId' => $device->id ])}}" class="btn btn-dark">Зробити фото</a>
                                 <a href="{{ route('register', ['deviceId' => $device->id ])}}" class="btn btn-dark">Галерея</a>
                             </div>
                         </div>

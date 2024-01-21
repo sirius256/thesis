@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('action');
             $table->integer('device_id');
-            $table->integer('status_id');
+            $table->string('status', 16);
             $table->integer('user_id');
+            $table->text('settings');
             $table->timestamps();
         });
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Device;
+use App\Models\DeviceActionQueue;
 use App\Models\DeviceModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,4 +33,37 @@ class DeviceController extends Controller
         ]);
     }
 
+    public function userDeviceMakePhoto(Request $request, $deviceId) {
+        $device = Device::where('id', (int) $deviceId)->firstOrFail();
+        $action = 'make_photo';
+        $newStatus = 'new';
+        $settings = json_encode($device->getDeviceMakePhotoSettings());
+
+        $queue = DeviceActionQueue::where('action', $action)
+            ->where('user_id', Auth::id())
+            ->where('device_id', $device->id)
+            ->where('status', $newStatus)
+            ->where('settings', $settings)
+            ->get()
+            ->first();
+
+        $isQueueAlreadyExist = !empty($queue);
+
+        if ($isQueueAlreadyExist) {
+            /// message return already sed
+            return redirect()->route('administration.user.device.list')->with('status', 'Запит уже надіслано трішки раніше, очікуйте відповіді від пристрою.');
+        }
+
+        $deviceActionQueue = new DeviceActionQueue();
+        $deviceActionQueue->action = $action;
+        $deviceActionQueue->user_id = Auth::id();
+        $deviceActionQueue->device_id = $device->id;
+        $deviceActionQueue->status = $newStatus;
+        $deviceActionQueue->settings = $settings;
+        $deviceActionQueue->save();
+
+        return redirect()->route('administration.user.device.list')->with('status', 'Надіслано запит на створення фото, очікуйте відповіді від пристрою.');
+    }
+
 }
+

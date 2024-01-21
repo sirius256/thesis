@@ -24,6 +24,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/administration/user/device/shop', [DeviceController::class, 'userDeviceShop'])->name('administration.user.device.shop');
         Route::get('/administration/user/order/summary/{modelId}', [OrderController::class, 'summaryOrder'])->name('administration.user.order.summary');
         Route::post('/administration/user/order/summary/{modelId}', [OrderController::class, 'summaryOrderSubmit'])->name('administration.user.order.summary.submit');
+        Route::get('/administration/user/device/make/photo/{deviceId}', [DeviceController::class, 'userDeviceMakePhoto'])->name('administration.user.device.make.photo');
     });
 
     Route::middleware('hasModeratorRole')->group(function () {

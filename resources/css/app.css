@@ -226,7 +226,7 @@ body {
 }
 
 .content-footer {
-    padding: 20px 0 120px 0;
+    padding: 10px;
     display: flex;
 }
 
@@ -245,4 +245,12 @@ body {
 .public-footer-logo {
     width: 44px;
     display: block;
+}
+
+.custom-alert-success-message {
+    position: fixed !important;
+    top: 10px;
+    left: 200px;
+    background: red;
+    z-index: 1000;
 }
