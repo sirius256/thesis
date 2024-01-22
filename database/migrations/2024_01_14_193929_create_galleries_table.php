@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('device_galleries', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->integer('user_id');
+            $table->integer('device_id');
             $table->timestamps();
         });
     }

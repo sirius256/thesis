@@ -14,16 +14,16 @@
                     <div class="card device-item shadow">
                         <img class="card-img-top" src="{{ asset($device->getModelImageUrl()) }}" alt="device image">
                         <div class="card-body">
-                            <h5 class="card-title">Id:{{ $device->id }}</h5>
-                            <p class="card-text">
-                                <span>modelName: {{ $device->getModelName() }}</span>
-                                <span>name:{{ $device->name }}</span>
-                            </p>
+                            <h5 class="card-title">Модель дівайса: {{ $device->getModelName() }}</h5>
 
                             <div class="device-item-actions">
-                                <a href="{{ route('administration.user.device.make.photo', ['deviceId' => $device->id ])}}" class="btn btn-dark">Зробити фото</a>
-                                <a href="{{ route('register', ['deviceId' => $device->id ])}}" class="btn btn-dark">Галерея</a>
-                            </div>
+                                <div>
+                                    <a href="{{ route('administration.user.device.make.photo', ['deviceId' => $device->id ])}}" class="btn btn-dark">Зробити фото</a>
+                                </div>
+                                <div>
+                                    <a href="{{ route('administration.user.device.gallery.photos', ['galleryId' => $device->getGalleryId() ])}}" class="btn btn-dark">Галерея [{{ $device->getPhotoCount()}}]</a>
+                                </div>
+                          </div>
                         </div>
                     </div>
                 @endforeach

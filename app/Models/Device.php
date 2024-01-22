@@ -34,6 +34,10 @@ class Device extends Model {
      * @return void
      */
     public function setSettingDevicePhotoExtension(string $value) {
+        if (!in_array($value, DeviceSettings::getAvailablePhotoExtensions())) {
+            return;
+        }
+
         foreach (DeviceSettings::where('device_id', $this->id)->get() as $deviceSettingItem) {
             if ($deviceSettingItem->name === DeviceSettings::PHOTO_EXTENSION) {
                 $deviceSetting = DeviceSettings::where('id', $deviceSettingItem->id)->first();
@@ -49,14 +53,36 @@ class Device extends Model {
         $deviceSetting->name = DeviceSettings::PHOTO_EXTENSION;
         $deviceSetting->value = $value;
         $deviceSetting->save();
-
-        return $deviceSetting->value;
     }
 
     public function getDeviceMakePhotoSettings() {
         return [
             DeviceSettings::PHOTO_EXTENSION => $this->getSettingDevicePhotoExtension()
         ];
+    }
+
+    public function getPhotoCount() {
+        $deviceGallery = DeviceGallery::where('device_id', $this->id)
+            ->where('user_id', $this->owner_user_id)
+            ->get()
+            ->first();
+
+        if (empty($deviceGallery)) {
+            return 0;
+        }
+
+        $deviceGalleryImages = DeviceGalleryImage::where('gallery_id', $deviceGallery->id)
+            ->get();
+
+        return count($deviceGalleryImages->toArray());
+    }
+
+    public function getGalleryId() {
+        $deviceGallery = DeviceGallery::where('device_id', $this->id)
+            ->where('user_id', $this->owner_user_id)
+            ->firstOrFail();
+
+        return $deviceGallery->id;
     }
 
 }

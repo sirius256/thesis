@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DeviceApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::middleware('checkDeviceHash')->group(function () {
+    Route::get('/device/action/get', [DeviceApiController::class, 'apiDeviceActionGet'])->name('api.device.action.get');
+    Route::post('/device/action/photo/send', [DeviceApiController::class, 'apiDeviceActionPhotoSend'])->name('api.device.action.photo.send');
 });

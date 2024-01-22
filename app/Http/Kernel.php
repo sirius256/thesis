@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'hasAdminRole' => \App\Http\Middleware\IsUserRoleAdmin::class,
         'hasUserRole' => \App\Http\Middleware\IsUserRoleUser::class,
         'hasModeratorRole' => \App\Http\Middleware\IsUserRoleModerator::class,
+        'checkDeviceHash' => \App\Http\Middleware\CheckDeviceHash::class,
     ];
 }

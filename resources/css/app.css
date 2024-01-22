@@ -247,10 +247,13 @@ body {
     display: block;
 }
 
-.custom-alert-success-message {
+.custom-alert-message {
     position: fixed !important;
     top: 10px;
     left: 200px;
-    background: red;
     z-index: 1000;
+}
+
+.card-custom-image {
+    max-height: 200px;
 }

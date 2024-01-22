@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Device;
 use App\Models\DeviceActionQueue;
+use App\Models\DeviceGallery;
+use App\Models\DeviceGalleryImage;
 use App\Models\DeviceModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class DeviceController extends Controller
@@ -35,8 +38,8 @@ class DeviceController extends Controller
 
     public function userDeviceMakePhoto(Request $request, $deviceId) {
         $device = Device::where('id', (int) $deviceId)->firstOrFail();
-        $action = 'make_photo';
-        $newStatus = 'new';
+        $action = DeviceActionQueue::ACTION_MAKE_PHOTO;
+        $newStatus = DeviceActionQueue::STATUS_NEW;
         $settings = json_encode($device->getDeviceMakePhotoSettings());
 
         $queue = DeviceActionQueue::where('action', $action)
@@ -50,8 +53,7 @@ class DeviceController extends Controller
         $isQueueAlreadyExist = !empty($queue);
 
         if ($isQueueAlreadyExist) {
-            /// message return already sed
-            return redirect()->route('administration.user.device.list')->with('status', 'Запит уже надіслано трішки раніше, очікуйте відповіді від пристрою.');
+            return redirect()->route('administration.user.device.list')->with('warning', 'Запит уже надіслано трішки раніше, очікуйте відповіді від пристрою.');
         }
 
         $deviceActionQueue = new DeviceActionQueue();
@@ -63,6 +65,38 @@ class DeviceController extends Controller
         $deviceActionQueue->save();
 
         return redirect()->route('administration.user.device.list')->with('status', 'Надіслано запит на створення фото, очікуйте відповіді від пристрою.');
+    }
+
+    public function userDeviceGalleryPhotos(Request $request, $galleryId): View
+    {
+
+        $deviceGallery = DeviceGallery::where('id', (int) $galleryId)
+            ->where('user_id', Auth::id())
+            ->firstOrFail();
+
+        $deviceGalleryImages = DeviceGalleryImage::where('gallery_id', $deviceGallery->id)
+            ->get();
+
+        return view('main.pages.administration.userDeviceGalleryPhotos', [
+            'deviceGalleryImages' => $deviceGalleryImages,
+            'pageTitle' => 'Галерея',
+        ]);
+    }
+
+    public function userDeviceGalleryPhotoView(Request $request, $photoId)
+    {
+        $deviceGalleryImage = DeviceGalleryImage::where('id', (int) $photoId)->firstOrFail();
+
+        // check if user is gallery owner:
+        DeviceGallery::where('id', $deviceGalleryImage->gallery_id)
+            ->where('user_id', Auth::id())
+            ->firstOrFail();
+
+        $path = Storage::path($deviceGalleryImage->original_image_url);
+
+        //TODO check if file exit if not return default image for images which doesn't exist
+
+        return response()->download($path);
     }
 
 }
