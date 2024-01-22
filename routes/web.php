@@ -27,12 +27,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/administration/user/device/make/photo/{deviceId}', [DeviceController::class, 'userDeviceMakePhoto'])->name('administration.user.device.make.photo');
         Route::get('/administration/user/device/gallery/photos/{galleryId}', [DeviceController::class, 'userDeviceGalleryPhotos'])->name('administration.user.device.gallery.photos');
         Route::get('/administration/user/device/gallery/photo/view/{photoId}', [DeviceController::class, 'userDeviceGalleryPhotoView'])->name('administration.user.device.gallery.photo.view');
-
-
-        // TODO
-        // image viewer for users
-        // setting device form submit
-        // user gallery
     });
 
     Route::middleware('hasModeratorRole')->group(function () {
