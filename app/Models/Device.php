@@ -102,4 +102,13 @@ class Device extends Model {
 
         return $deviceGallery;
     }
+
+    public function getPhotoDeviceActionQueueCount() {
+        $deviceActionQueue = DeviceActionQueue::where('device_id', $this->id)
+            ->where('action', DeviceActionQueue::ACTION_MAKE_PHOTO)
+            ->where('status', DeviceActionQueue::STATUS_NEW)
+            ->get();
+
+        return count($deviceActionQueue);
+    }
 }
