@@ -18,10 +18,15 @@
 
                             <div class="device-item-actions">
                                 <div>
-                                    <a href="{{ route('administration.user.device.make.photo', ['deviceId' => $device->id ])}}" class="btn btn-dark">Зробити фото</a>
+                                    <a href="{{ route('administration.user.device.make.photo', ['deviceId' => $device->id ])}}" class="btn btn-dark btn-sm">Зробити фото</a>
                                 </div>
                                 <div>
-                                    <a href="{{ route('administration.user.device.gallery.photos', ['galleryId' => $device->getGalleryId() ])}}" class="btn btn-dark">Галерея [{{ $device->getPhotoCount()}}]</a>
+                                    <a href="{{ route('administration.user.device.gallery.photos', ['galleryId' => $device->getGalleryId() ])}}" class="btn btn-dark btn-sm">Галерея [{{ $device->getPhotoCount()}}]</a>
+                                </div>
+                                <div>
+                                    <a href="{{ route('administration.user.device.settings', ['deviceId' => $device->id ])}}" class="btn btn-dark btn-sm">
+                                        <i class="fa-solid fa-wrench"></i>
+                                    </a>
                                 </div>
                           </div>
                         </div>

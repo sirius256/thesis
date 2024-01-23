@@ -23,7 +23,7 @@
             </div>
         </div>
         <footer class="footer">
-            <div class="container">footer</div>
+            <div class="container"></div>
         </footer>
     </main>
 @endsection

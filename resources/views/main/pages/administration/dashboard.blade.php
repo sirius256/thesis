@@ -2,6 +2,6 @@
 
 @section('content')
     <div class="admin-page-content">
-
+        Привіт, {{ $user->name }}!
     </div>
 @endsection

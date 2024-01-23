@@ -27,6 +27,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/administration/user/device/make/photo/{deviceId}', [DeviceController::class, 'userDeviceMakePhoto'])->name('administration.user.device.make.photo');
         Route::get('/administration/user/device/gallery/photos/{galleryId}', [DeviceController::class, 'userDeviceGalleryPhotos'])->name('administration.user.device.gallery.photos');
         Route::get('/administration/user/device/gallery/photo/view/{photoId}', [DeviceController::class, 'userDeviceGalleryPhotoView'])->name('administration.user.device.gallery.photo.view');
+        Route::get('/administration/user/device/settings/{deviceId}', [DeviceController::class, 'userDeviceSettings'])->name('administration.user.device.settings');
+        Route::post('/administration/user/device/settings/{deviceId}', [DeviceController::class, 'userDeviceSettingsSubmit'])->name('administration.user.device.settings.submit');
     });
 
     Route::middleware('hasModeratorRole')->group(function () {

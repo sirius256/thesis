@@ -20,6 +20,7 @@ class DashboardController extends Controller
 
         return view('main.pages.administration.dashboard', [
             'pageTitle' => 'Головна',
+            'user' => $request->user(),
         ]);
     }
 

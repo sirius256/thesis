@@ -11,7 +11,8 @@ class DeviceSettings extends Model {
 
    public static function getAvailablePhotoExtensions() {
        return [
-           DeviceSettings::DEFAULT_PHOTO_EXTENSION
+           DeviceSettings::DEFAULT_PHOTO_EXTENSION,
+           'image/png',
        ];
    }
 

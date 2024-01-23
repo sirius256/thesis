@@ -7,6 +7,7 @@ use App\Models\DeviceActionQueue;
 use App\Models\DeviceGallery;
 use App\Models\DeviceGalleryImage;
 use App\Models\DeviceModel;
+use App\Models\DeviceSettings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -97,6 +98,36 @@ class DeviceController extends Controller
         //TODO check if file exit if not return default image for images which doesn't exist
 
         return response()->download($path);
+    }
+
+    public function userDeviceSettings(Request $request, $deviceId)
+    {
+        $device = Device::where('id', $deviceId)
+            ->where('owner_user_id', Auth::id())
+            ->where('is_active', 1)
+            ->firstOrFail();
+
+        return view('main.pages.administration.userDeviceSettings', [
+            'device' => $device,
+            'availablePhotoExtensions' => DeviceSettings::getAvailablePhotoExtensions(),
+            'pageTitle' => 'Налаштування дівайсу',
+        ]);
+    }
+
+    public function userDeviceSettingsSubmit(Request $request, $deviceId)
+    {
+        $device = Device::where('id', (int) $deviceId)
+            ->where('owner_user_id', Auth::id())
+            ->where('is_active', 1)
+            ->firstOrFail();
+
+        if (!empty($request->photo_extension) && is_string($request->photo_extension)
+            && in_array($request->photo_extension, DeviceSettings::getAvailablePhotoExtensions())) {
+            $device->setSettingDevicePhotoExtension($request->photo_extension);
+        }
+
+        return redirect()->route('administration.user.device.list')
+            ->with('status', 'Налаштування дівайсу обновлені');
     }
 
 }

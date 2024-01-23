@@ -57,11 +57,14 @@ body {
 .admin-menu-item {
     color: white;
     text-align: left;
-    display: block;
+    display: flex;
     padding: 10px 10px 10px 20px;
     background: #2469a1;
     text-decoration: none;
     font-size: 14px;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
 }
 
 .admin-menu-item.active,
@@ -76,7 +79,6 @@ body {
 }
 
 .admin-menu-item-logout-wrap button {
-    display: block;
     width: 100%;
 }
 
@@ -103,7 +105,7 @@ body {
 }
 
 .admin-content-left-block {
-    width: 200px;
+    width: 250px;
     border-right: 1px solid #d5d6d8;
     background: #0f3859;
 }
@@ -256,4 +258,11 @@ body {
 
 .card-custom-image {
     max-height: 200px;
+}
+
+.shop-device-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 300px;
 }
