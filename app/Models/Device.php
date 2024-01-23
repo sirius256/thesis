@@ -75,9 +75,7 @@ class Device extends Model {
     }
 
     public function getGalleryId() {
-        $deviceGallery = DeviceGallery::where('device_id', $this->id)
-            ->where('user_id', $this->owner_user_id)
-            ->firstOrFail();
+        $deviceGallery =  $this->getOrCreateGallery();
 
         return $deviceGallery->id;
     }
@@ -92,6 +90,10 @@ class Device extends Model {
             return $deviceGallery;
         }
 
+        return $this->createGallery();
+    }
+
+    private function createGallery() {
         $deviceGallery = new DeviceGallery();
         $deviceGallery->user_id = $this->owner_user_id;
         $deviceGallery->device_id = $this->id;
@@ -100,5 +102,4 @@ class Device extends Model {
 
         return $deviceGallery;
     }
-
 }
