@@ -13,6 +13,7 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="icon" type="image/png" href="{{ asset('/ico.png') }}"/>
 </head>
 <body>
     @include('main.components.sessionMessages')
