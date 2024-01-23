@@ -94,18 +94,7 @@ class DeviceApiController extends Controller
         $deviceActionQueue->status = DeviceActionQueue::STATUS_COMPLETED;
         $deviceActionQueue->save();
 
-        $deviceGallery = DeviceGallery::where('device_id', $device->id)
-            ->where('user_id', $device->owner_user_id)
-            ->get()
-            ->first();
-
-        if (empty($deviceGallery)) {
-            $deviceGallery = new DeviceGallery();
-            $deviceGallery->user_id = $device->owner_user_id;
-            $deviceGallery->device_id = $device->id;
-            $deviceGallery->name = 'Gallery for device ' . $device->id;
-            $deviceGallery->save();
-        }
+        $deviceGallery = $device->getOrCreateGallery();
 
         $deviceGalleryImage = new DeviceGalleryImage();
         $deviceGalleryImage->gallery_id = $deviceGallery->id;
