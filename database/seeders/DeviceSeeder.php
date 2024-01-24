@@ -14,6 +14,13 @@ class DeviceSeeder extends Seeder
      */
     public function run(): void
     {
+        DB::table('devices')->insert([
+            'name' => 'Мій дівайс',
+            'model_id' => 1,
+            'hash' => 'lnup',
+            'owner_user_id' => null,
+        ]);
+
         for ($i = 1; $i <= 10; $i++) {
             DB::table('devices')->insert([
                 'name' => 'Мій дівайс',
