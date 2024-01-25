@@ -270,9 +270,14 @@ body {
 
 .photo-items {
     display: block;
+    text-align: center;
 }
 .photo-items .card {
     margin-bottom: 10px;
+}
+
+.photo-items .device-item{
+    display: inline-block;
 }
 
 @media only screen and (max-width: 768px) {
