@@ -17,7 +17,7 @@ class DeviceGalleryImage extends Model {
     }
 
     public function getAssetUrl() {
-        return route('administration.user.device.gallery.photo.view', ['photoId' => $this->id]);
+        return route('administration.user.device.gallery.photo.view', ['photoId' => $this->id, 'hash' => microtime() . md5($this->timestamps) . $this->id]);
     }
 
 }
