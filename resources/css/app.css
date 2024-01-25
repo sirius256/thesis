@@ -266,3 +266,37 @@ body {
     justify-content: space-between;
     height: 300px;
 }
+
+
+.photo-items {
+    display: block;
+}
+.photo-items .card {
+    margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+    .admin-menu-item span {
+        display: none;
+    }
+
+    .admin-menu-item span {
+        display: none;
+    }
+    .admin-content-left-block {
+        width: 60px;
+    }
+
+    .device-item {
+        width : 100%;
+        margin: 0 auto 20px auto;
+    }
+
+     .device-items {
+         display: block;
+     }
+
+     .public-about-block {
+         padding: 60px 30px;
+     }
+}

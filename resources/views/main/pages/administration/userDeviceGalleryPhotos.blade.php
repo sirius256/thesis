@@ -14,7 +14,7 @@
             </div>
         @else
             <div>Кількість фото: {{ count($deviceGalleryImages) }}</div>
-            <div class="device-items">
+            <div class="photo-items">
                 @foreach ($deviceGalleryImages as $image)
                     <div class="card device-item shadow">
                         <div>
