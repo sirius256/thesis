@@ -76,6 +76,7 @@ class DeviceController extends Controller
             ->firstOrFail();
 
         $deviceGalleryImages = DeviceGalleryImage::where('gallery_id', $deviceGallery->id)
+            ->where('user_id', Auth::id())
             ->get();
 
         return view('main.pages.administration.userDeviceGalleryPhotos', [
